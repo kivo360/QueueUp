@@ -43,16 +43,15 @@ class UploadCommand(Command):
 
 
 setup(
-    name="queue_up",
+    name="queueup",
     version="0.1",
     author="Kevin Hill",
-    author_email="kevin@funguana.com",
+    author_email="kah.kevin.hill@gmail.com",
     description="A distributed queue library layered over kombu",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    py_modules=["queue_up"],
-    install_requires=['kombu'
-    ], 
+    py_modules=["queueup"],
+    install_requires=['kombu'], 
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
