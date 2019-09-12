@@ -25,14 +25,24 @@ class Queue(object):
         pass
     
     def qsize(self) -> int:
-        if self.is_local:
+        if self.is_local == True:
             return self.localized.qsize()
         return self.distributed.qsize()
 
+    def clear_queue(self):
+        if self.is_local:
+            while not self.empty():
+                self.get_nowait()
+        else:
+            self.distributed.clear()
     def empty(self) -> bool:
         if self.is_local:
             return self.localized.empty()
-        return (self.distributed.qsize() == 0)
+        else:
+            current_size = self.distributed.qsize()
+            if current_size == 0:
+                return True
+            return False
 
     def put(self, item, block=True, timeout=None):
         if self.is_local == True:
@@ -60,6 +70,6 @@ class Queue(object):
             return self.distributed.get_nowait()
     
     def close(self):
-        """ Closes the distributed queue if it's distributed """
+        """ Closes the distributed queue if it's distributed with redis or any other library. """
         if self.is_local == False:
             self.distributed.close()

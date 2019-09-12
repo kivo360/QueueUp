@@ -5,6 +5,9 @@ name = "pypi"
 
 [packages]
 kombu = "*"
+queueup = {editable = true, path = "."}
+pytest = "*"
+redis = "*"
 
 [dev-packages]
 

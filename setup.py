@@ -51,7 +51,7 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     py_modules=["queueup"],
-    install_requires=['kombu'], 
+    install_requires=['kombu', 'redis'], 
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
